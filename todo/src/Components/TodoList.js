@@ -2,18 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Todo from './Todo'
 
+import styled from 'styled-components';
+
+const StyledToDoUl = styled.ul`
+    padding-inline-start: 0px;
+`;
+
 const TodoList = ({ todos, onTodoClick }) => (
-  <ul>
+  <StyledToDoUl>
     {todos.map((todo, index) => (
       <Todo key={index} {...todo} onClick={() => onTodoClick(index)} />
     ))}
-  </ul>
+  </StyledToDoUl>
 )
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.number,//.isRequired,
       completed: PropTypes.bool.isRequired,
       text: PropTypes.string.isRequired
     }).isRequired

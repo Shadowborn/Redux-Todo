@@ -2,12 +2,31 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions/actions'
 
+import styled from 'styled-components';
+
+const StyledAddTodoButton = styled.button`
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background-color: red;
+    color: white;
+    font-size: 16px;
+`;
+const StyledAddTodoForm = styled.form`
+    width: 100%;
+`;
+const StyledAddTodoInput = styled.input`
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+`;
+
 let AddTodo = ({ dispatch }) => {
   let input
 
   return (
     <div>
-      <form
+      <StyledAddTodoForm
         onSubmit={e => {
           e.preventDefault()
           if (!input.value.trim()) {
@@ -17,13 +36,13 @@ let AddTodo = ({ dispatch }) => {
           input.value = ''
         }}
       >
-        <input
+        <StyledAddTodoInput
           ref={node => {
             input = node
           }}
         />
-        <button type="submit">Add Todo</button>
-      </form>
+        <StyledAddTodoButton type="submit">Add Todo</StyledAddTodoButton>
+      </StyledAddTodoForm>
     </div>
   )
 }
